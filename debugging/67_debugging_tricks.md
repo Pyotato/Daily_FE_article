@@ -2,7 +2,7 @@
 
 
 - 원문 : [67 Weird Debugging Tricks Your Browser Doesn't Want You to Know](https://alan.norbauer.com/articles/browser-debugging-tricks#user-content-fn-1)
-- `브라우저 디버거를 최대한 활용할 수 있는 유용하지만 당연하지는 않는 팁들을 담았습니다. 개발자 툴에 대한 중상 이상의 이해도를 지닌 독자들을 위한 글입니다.`
+- `브라우저 디버거를 최대한 활용할 수 있는 유용하지만 당연하지는 않는 팁들을 담았습니다. 개발자 툴에 대한 중 이상의 이해도를 지닌 독자들을 위한 글입니다.`
 
 > 목차
 >
