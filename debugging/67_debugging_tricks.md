@@ -232,9 +232,45 @@ console API의 `copy()`를 통해서 아무런 string 조작없이 브라우저�
 
 <h2 id="7">Debugging HTML/CSS</h2>
 
-<h3 id="7-1">Inspect the DOM with JS Disabled</h3>
-<h3 id="7-2">Inspect an Elusive Element</h3>
-<h3 id="7-3">Record Snapshots of the DOM</h3>
+JS 콘솔을 활용하면 HTML/CSS의 문제를 진단하는데 유용할 수 있습니다.
+
+<h3 id="7-1">Inspect the DOM with JS Disabled : JS가 비활성화된 상태의 DOM 검사하기</h3>
+DOM inspector에서 `ctrl+\`(크롬/윈도우)를 활용하면 JS 실행을 언제든지 중단할 수 있습니다. 이를 통해 JS나 이벤트가 독자가 모르는 사이에 돔을 변경하지 않고 DOM 스냅샷을 검사할 수 있게 합니다.  
+
+<h3 id="7-2">Inspect an Elusive Element : 붙들고 있기 어려운 요소 검사</h3>
+특정 조건에만 보이는 DOM 요소를 검사하고 싶다고 합시다. 다른 요소에 마우스를 호버해야지만 해당 요소가 보이고, 마우스가 호버한 요소에서 벗어날 경우 사라집니다.
+
+![image](https://github.com/Pyotato/Daily_FE_article/assets/102423086/9ebffba8-fc99-4bd3-be35-5d67f395b994)
+
+위의 요소를 검사하고 싶다면 아래의 코드를 콘솔에 추가해보면 `setTimeout(function() { debugger; }, 5000);` 5초 타이머가 종료되면 JS 실행이 중단되고 요소가 사라지는 경우가 없도록합니다. 개발자 툴로 마우스를 옮겨도 해당 요소가 사라지는 걸 막을 수 있습니다. 
+
+![image](https://github.com/Pyotato/Daily_FE_article/assets/102423086/f22d075a-a66f-4d88-ba01-d576729e4c4c)
+
+js 실행이 멈춘 동안 요소를 검사하거나, css를 수정하고 js 콘솔의 커맨드를 실행시킬 수 있습니다. 검사하려는 DOM이 커서 위치, focus등에 종속된 경우 유용합니다.  
+
+<h3 id="7-3">Record Snapshots of the DOM : DOM의 스냅샷 기록하기</h3>
+
+* 현재 DOM의 상태를 복사하고 싶을 경우 :`copy(document.documentElement.outerHTML);`
+
+* 매초 DOM의 스냅샷을 기록하고 싶을 경우
+
+  ```js
+let doms = [];
+setInterval(() => {
+  const domStr = document.documentElement.outerHTML;
+  doms.push(domStr);
+}, 1000);
+```
+
+* 단순 콘솔에 출력하고 싶을 경우:
+
+```js
+setInterval(() => {
+  const domStr = document.documentElement.outerHTML;
+  console.log("snapshotting DOM: ", domStr);
+}, 1000);
+```
+
 <h3 id="7-4">Monitor Focused Element</h3>
 <h3 id="7-5">Find Bold Elements</h3>
 <h4 id="7-5-1">Just Descendants</h4>
