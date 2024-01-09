@@ -103,26 +103,47 @@
 함수가 호출될 때 인자 개수가 불일치한다면 중단 (`arguments.callee.length != arguments.length`)함으로써 함수 호출 위치의 버그를 찾을 때 유용합니다. 
 
 <h3 id="1-5">Using Time : 시간 활용하기</h3>
-<h4 id="1-5-1">Skip Page Load</h4>
+<h4 id="1-5-1">Skip Page Load : 페이지 로드 후 몇 초 동안은 중단 불가</h4>
 페이지가 로드되고 5초가 지나고 나서야 (`performance.now() > 500`) 중단하게 함으로써 초기 페이지 로드 후에 실행 중단을 하도록하게 하고 싶을 때 유용합니다.
 
-<h4 id="1-5-2">Skip N Seconds</h4>
+<h4 id="1-5-2">Skip N Seconds : N초 후에만 중단 가능</h4>
 중단점이 5초 동안은 실행 중단을 하지 못하도록 하고 그 이후로는 (`window.baseline = window.baseline || Date.now(), (Date.now() - window.baseline)>5000`) 중단하게 함으로써 콘솔을 통해 `window.baseline = Date.now()` 원하는 시간으로 counter를 리셋할 수 있습니다.
 
 <h3 id="1-6">Using CSS : CSS 활용하기</h3>
 계산된 CSS 값(document body가 빨강 배경색을 지닐 떄만 실행을 중단하게 하기)을 활용
 할 수 있습니다 : `window.getComputedStyle(document.body).backgroundColor === rgb(255,0,0)`
-<h3 id="1-7">Even Calls Only</h3>
+<h3 id="1-7">Even Calls Only : 짝수 호출만 중단</h3>
 실행할 함수 줄이 번갈아서 한번만 중단되도록 하기 (짝수나 홀수번째 줄에서만 중단하도록) : `window.counter = window. counter || 0, window.counter % 2 ===0`
-<h3 id="1-8">Break on Sample</h3>
+<h3 id="1-8">Break on Sample: 랜덤하게 중단</h3>
 랜덤 샘플의 줄이 실행될 때만 중단하도록 하기 (10번 실행 중 1번 중단하도록 하기 : `Math.random() < 0.1 `)
-<h3 id="1-9">Never Pause Here</h3>
+<h3 id="1-9">Never Pause Here : 절대 중단하지 않을 지점 설정</h3>
   `📌CHROME ONLY FEATURE`
   코드 블록에서 오른쪽 클릭을 하고 `Never Pause Here` 선택시, 크롬 브라우저는 조건부 중단점을 `false`으로 설정해서 생성하므로써 디버거 절대로 이 줄에서 중단하지 않도록 합니다.
  XHR 중단점에서 줄을 제외시키거나, 던져진 예외를 무시하고 싶을 경우 등에서 유용합니다.  
   
-<h3 id="1-10">Automatic Instance IDs</h3>
-<h3 id="1-11">Programmatically Toggle</h3>
+<h3 id="1-10">Automatic Instance IDs : 자동 ID 인스턴스 할당하기</h3>
+조건부 중단점을 클래스 생성자로 설정하면 클래스의 모든 인스턴스에 유일한 ID를 자동으로 할당합니다. `(window.instances = window.instances || []).push(this)`
+
+이 유일 ID 를 불러올 때는 `window.instances.indexOf(instance)`를 활용하면 됩니다.
+
+<h3 id="1-11">Programmatically Toggle : 프로그래밍적으로 토글</h3>
+전역 불리언 게이트를 통해 하나 이상의 조건부 중단점을 생성하고
+
+![Programmatically Toggle](https://github.com/Pyotato/Daily_FE_article/assets/102423086/3a9ced0b-ad60-4f43-bc5e-bc195c825c2e)
+
+프로그래밍적으로 불리언이 토글되도록 할 수 있습니다. 아래는 그중 몇가지 방법들입니다.
+
+* 수동적으로 콘솔을 활용
+```js
+window.enableBreakpoints = true;
+```
+* 다른 중단점을 활용
+![image](https://github.com/Pyotato/Daily_FE_article/assets/102423086/dc995c5f-1a3c-473e-9496-c2ae05bc3459)
+* 콘솔의 타이머를 활용
+```js
+setTimeout(()=>window.enableBreakpoints = true),5000);
+```
+
 <h2 id="2">monitor() class Calls</h2>
 <h3 id="2-1">From a Specific Instance</h3>
 <h2 id="3">Call and Debug a Function</h2>
