@@ -144,9 +144,41 @@ window.enableBreakpoints = true;
 setTimeout(()=>window.enableBreakpoints = true),5000);
 ```
 
-<h2 id="2">monitor() class Calls</h2>
+<h2 id="2">monitor() class Calls : monitor()클래스 함수 호출</h2>
+  `📌CHROME ONLY FEATURE`
+크롬의 `monitor` 커맨드라인 메소드를 활용해서 쉽게 모든 클래스 호출 메소드들을 추적할 수 있습니다. 
+
+Dog 라는 클래스가 있다고 합시다.
+
+```js
+class Dog{
+  bark(count){
+      /*...*/
+  }
+}
+```
+Dog의 모든 인스턴스들이 호출된 모든 회수를 알고 싶다면 커맨드라인에 아래와 같이 추가하면
+
+```js
+var p = Dog.prototype;
+Object.getOwnPropertyNames(p).forEach((k) => monitor(p[k]));
+```
+
+결과 : `function bark called with arguments: 2`
+
+콘솔에 로그만 하는 대신, 메소드 호출 시 실행 중단을 원한다면 `monitor` 대신 `debug`를 사용할 수 있습니다. 
+
 <h3 id="2-1">From a Specific Instance</h3>
-<h2 id="3">Call and Debug a Function</h2>
+  `📌CHROME ONLY FEATURE`
+ 만약 클래스는 모르지만 인스턴스가 있을 경우, 아래를 커맨드라인에 추가하면 
+
+```js
+var p = instance.constructor.prototype;
+Object.getOwnPropertyNames(p).forEach((k) => monitor(p[k]));
+```
+Dog 클래스뿐만 아니라 모든 인스턴스의 모든 클래스에서 위와 같은 기능을 하는 함수를 작성하고 싶다면 유용합니다.
+ 
+<h2 id="3">Call and Debug a Function : 함수 호출과 디버깅</h2>
 <h2 id="4">Pause Execution on URL Change</h2>
 <h2 id="5">Debugging Property Reads</h2>
 <h2 id="6">Use copy()</h2>
