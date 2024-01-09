@@ -271,11 +271,61 @@ setInterval(() => {
 }, 1000);
 ```
 
-<h3 id="7-4">Monitor Focused Element</h3>
-<h3 id="7-5">Find Bold Elements</h3>
+<h3 id="7-4">Monitor Focused Element : focus 된 요소들 검사하기</h3>
+
+```js
+(function () {
+  let last = document.activeElement;
+  setInterval(() => {
+    if (document.activeElement !== last) {
+      last = document.activeElement;
+      console.log("Focus changed to: ", last);
+    }
+  }, 100);
+})();
+```
+
+![image](https://github.com/Pyotato/Daily_FE_article/assets/102423086/c0459c44-cb13-4b58-bb43-185df0840d62)
+
+<h3 id="7-5">Find Bold Elements : 굵은 폰트의 요소 찾기</h3>
+
+```js
+const isBold = (e) => {
+  let w = window.getComputedStyle(e).fontWeight;
+  return w === "bold" || w === "700";
+};
+Array.from(document.querySelectorAll("*")).filter(isBold);
+
+```
+
 <h4 id="7-5-1">Just Descendants</h4>
-<h3 id="7-6">Reference Currently Selected</h3>
-<h3 id="7-7">Element</h3>
-<h4 id="7-7-1">Previous Element</h4>
-<h4 id="7-7-2">Get Event Listeners</h4>
-<h3 id="7-8">Monitor Events for Element</h3>
+
+`Array.from($0.querySelectorAll("*")).filter(isBold);`를 통해 인스펙터에서 현재 선택된 요소의 자손 요소만 찾을 수 있습니다.
+
+<h3 id="7-6">Reference Currently Selected Element</h3>
+콘솔에서 `$0`은 요소 인스펙터 내에 현재 선택된 요소를 자동으로 참조합니다.
+
+<h4 id="7-6-1">Previous Element : 이전 검사한 요소들 접근</h4>
+
+`📌CHROME, EDGE ONLY FEATURE`
+
+크롬과 엣지에서는 `$1`, `$2`... 를 통해 이전, 그 이전 등등의 검사했던 요소들에 접근 가능합니다.
+
+<h4 id="7-6-2">Get Event Listeners: 이벤트 리스너에 접근</h4>
+
+`📌CHROME ONLY FEATURE`
+
+크롬브라우저에는 현재 선택한 요소의 이벤트 리스너를 검사할 수 있습니다. 
+ex) `getEventListeners($0)`
+
+![image](https://github.com/Pyotato/Daily_FE_article/assets/102423086/6b084bfb-34f5-48d3-96eb-beae9222085b)
+
+
+<h3 id="7-7">Monitor Events for Element : 요소 이벤트 모니터링</h3>
+
+`📌CHROME ONLY FEATURE`
+- 선택한 요소의 모든 이벤트 디버깅 :`monitorEvents($0)`
+- 선택한 요소의 특정 이벤트 디버깅 : `monitorEvents($0, ["control", "key"])`
+
+![Monitor Events for Element](https://github.com/Pyotato/Daily_FE_article/assets/102423086/6767a5ec-f57c-45f9-acb3-7361ad5ba5c1)
+
