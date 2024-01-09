@@ -168,9 +168,9 @@ Object.getOwnPropertyNames(p).forEach((k) => monitor(p[k]));
 
 콘솔에 로그만 하는 대신, 메소드 호출 시 실행 중단을 원한다면 `monitor` 대신 `debug`를 사용할 수 있습니다. 
 
-<h3 id="2-1">From a Specific Instance</h3>
+<h3 id="2-1">From a Specific Instance : 특정 인스턴스을 통해</h3>
   `📌CHROME ONLY FEATURE`
- 만약 클래스는 모르지만 인스턴스가 있을 경우, 아래를 커맨드라인에 추가하면 
+ 만약 클래스는 모르는 인스턴스가 있을 경우, 아래를 커맨드라인에 추가하면 
 
 ```js
 var p = instance.constructor.prototype;
@@ -178,8 +178,44 @@ Object.getOwnPropertyNames(p).forEach((k) => monitor(p[k]));
 ```
 Dog 클래스뿐만 아니라 모든 인스턴스의 모든 클래스에서 위와 같은 기능을 하는 함수를 작성하고 싶다면 유용합니다.
  
-<h2 id="3">Call and Debug a Function : 함수 호출과 디버깅</h2>
-<h2 id="4">Pause Execution on URL Change</h2>
+<h2 id="3">Call and Debug a Function : 함수 호출과 Debugger 또는 debug() 호출하기</h2>
+
+함수를 호출하기 전에 콘솔에서 디버깅을 하고 싶다면 `debugger`를 호출 할 수 있습니다. 
+
+```js
+function fn(){
+/*...*/
+}
+
+```
+
+콘솔에 `debugger; fn(1);`를 입력한 후 -> `step into next function call (다음 함수 호출 단계로 넘어가면)` fn 함수의 구현체를 디버깅할 수 있습니다.
+
+fn의 정의를 찾아서 수동으로 중단점을 추가하고 싶지 않을 경우나, fn이 동적으로 함수에 종속되어 소스를 모를 경우 유용합니다. 
+
+크롬에서는 추가적으로 debug(fn)을 커맨드라인에 호출할 떄마다 fn 내부에서 실행을 중단하도록 설정하는 옵션이 있습니다.
+
+<h2 id="4">Pause Execution on URL Change : URL이 변경될 경우 실행 중단</h2>
+SPA(single-page application)에서 URL이 변경(라우팅 이벤트 발생)되기 전에 실행을 중단하게 할 수 있습니다. 
+
+```js
+const dbg = ()=>{debugger;};
+history.pushState = dbg;
+history.replaceState = dbg;
+window.onhashchange = dbg;
+window.onpopstate = dbg;
+```
+페이지 이동 실행중단을 하지 않는 dgb의 버젼을 만드는 독자의 몫이다.
+
+또한, `window.location.replace/assign`과 같이 직접 페이지를 할당하여 페이지가 언로드 되어, 디버깅할게 없어지는 경우에 대한 처리를 해주지 않았다는 점에 유의해야한다.
+
+만약 redirect 하기 이전의 (그리고 redirect 시의 상태를 디버그하고 싶다면 크롬의 debug()를 통해 유사한 메소드를 디버그할 수 있다. 
+
+```js
+debug(window.location.replace);
+debug(window.location.assign);
+```
+
 <h2 id="5">Debugging Property Reads</h2>
 <h2 id="6">Use copy()</h2>
 <h2 id="7">Debugging HTML/CSS</h2>
