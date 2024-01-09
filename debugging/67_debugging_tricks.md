@@ -223,7 +223,15 @@ debug(window.location.assign);
 설정 옵션 등을 전달해야할 경우 등의 상황에서 어떻게 사용될 지등을 알고 싶을 경우 유용합니다.
 
 <h2 id="6">Use copy()</h2>
+`📌CHROME, FIREFOX ONLY FEATURE`
+console API의 `copy()`를 통해서 아무런 string 조작없이 브라우저에서 흥미로운 정보를 직접 클립보드로 가져올 수 있습니다. 독자가 흥미를 가질만한 항목들 중 몇가지 입니다:
+- 현재 DOM의 스냅샷 : `copy(document.documentElement.outerHTML)`
+- 리소스(이미지 등)에 대한 Metadata : `copy(performance.getEntriesByType('resource))`
+- 포멧이된 형태의 큰 JSON blob : `copy(JSON.parse(blob))`
+- 로컬스토리지 덤프 : `copy(localStorage)`
+
 <h2 id="7">Debugging HTML/CSS</h2>
+
 <h3 id="7-1">Inspect the DOM with JS Disabled</h3>
 <h3 id="7-2">Inspect an Elusive Element</h3>
 <h3 id="7-3">Record Snapshots of the DOM</h3>
