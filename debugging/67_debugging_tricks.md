@@ -168,7 +168,7 @@ Object.getOwnPropertyNames(p).forEach((k) => monitor(p[k]));
 
 콘솔에 로그만 하는 대신, 메소드 호출 시 실행 중단을 원한다면 `monitor` 대신 `debug`를 사용할 수 있습니다. 
 
-<h3 id="2-1">From a Specific Instance : 특정 인스턴스을 통해</h3>
+<h3 id="2-1">From a Specific Instance : 특정 인스턴스를를 통해</h3>
   `📌CHROME ONLY FEATURE`
  만약 클래스는 모르는 인스턴스가 있을 경우, 아래를 커맨드라인에 추가하면 
 
@@ -205,18 +205,23 @@ history.replaceState = dbg;
 window.onhashchange = dbg;
 window.onpopstate = dbg;
 ```
-페이지 이동 실행중단을 하지 않는 dgb의 버젼을 만드는 독자의 몫이다.
+페이지 이동 실행중단을 하지 않는 dgb의 버젼을 만드는 독자의 몫입니다.
 
-또한, `window.location.replace/assign`과 같이 직접 페이지를 할당하여 페이지가 언로드 되어, 디버깅할게 없어지는 경우에 대한 처리를 해주지 않았다는 점에 유의해야한다.
+또한, `window.location.replace/assign`과 같이 직접 페이지를 할당하여 페이지가 언로드 되어, 디버깅할게 없어지는 경우에 대한 처리를 해주지 않았다는 점에 유의해야한합니다.
 
-만약 redirect 하기 이전의 (그리고 redirect 시의 상태를 디버그하고 싶다면 크롬의 debug()를 통해 유사한 메소드를 디버그할 수 있다. 
+만약 redirect 하기 이전의 (그리고 redirect 시의 상태를 디버그하고 싶다면 크롬의 debug()를 통해 유사한 메소드를 디버그할 수 있습니다. 
 
 ```js
 debug(window.location.replace);
 debug(window.location.assign);
 ```
 
-<h2 id="5">Debugging Property Reads</h2>
+<h2 id="5">Debugging Property Reads : 프로퍼티를 읽을 경우의 디버깅</h2>
+
+객체(object)가 주어졌을 때, 객체의 프로퍼티가 read 될 때마다 알고 싶다면, 객체 getter와 debugger 호출을 활용할 수 있습니다.
+예를 들어 원래 소스코드나 조건부 중단점에 `{configOption:true}`를 `[get configOption(){debugger; return true}}`로 변경하면 됩니다.
+설정 옵션 등을 전달해야할 경우 등의 상황에서 어떻게 사용될 지등을 알고 싶을 경우 유용합니다.
+
 <h2 id="6">Use copy()</h2>
 <h2 id="7">Debugging HTML/CSS</h2>
 <h3 id="7-1">Inspect the DOM with JS Disabled</h3>
