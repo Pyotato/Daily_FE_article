@@ -1,10 +1,12 @@
-# 브라우저는 당신이 몰랐으면 하는 67가지 이상한 디버깅 트릭들
+# 🗣️ 브라우저는 당신이 몰랐으면 하는 67가지 이상한 디버깅 트릭들
 
-- 원문 : [67 Weird Debugging Tricks Your Browser Doesn't Want You to Know](https://alan.norbauer.com/articles/browser-debugging-tricks#user-content-fn-1)
+
+- `원문 : [67 Weird Debugging Tricks Your Browser Doesn't Want You to Know](https://alan.norbauer.com/articles/browser-debugging-tricks#user-content-fn-1)`
+- `브라우저 디버거를 최대한 활용할 수 있는 유용하지만 당연하지는 않는 팁들을 담았습니다. 개발자 툴에 대한 중상 이상의 이해도를 지닌 독자들을 위한 글입니다.`
 
 > 목차
 >
-> - [Advanced Conditional Breakpoints]()
+> - [Advanced Conditional Breakpoints](https://github.com/Pyotato/Daily_FE_article/blob/main/debugging/67_debugging_tricks.md#1)
 > - [Logpoints / Tracepoints]()
 > - [Watch Pane]()
 > - Tracing Callstacks
@@ -39,3 +41,5 @@
 > - Previous Elements
 > - Get Event Listeners
 > - Monitor Events for Element
+
+<a href="#" id="1">Advanced Conditional Breakpoints</a>
