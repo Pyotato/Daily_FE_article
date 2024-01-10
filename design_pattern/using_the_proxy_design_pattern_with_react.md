@@ -16,10 +16,17 @@
 
 ## 목차
 
-> - [프록시 디자인 패턴 이해하기]()
->   - [왜 객체에 대한 제어권을 갖아야할까?]()
->   - [프록시 디자인 패턴 활용의 장점]()
-> - [자바스크립트에서 프록시 객체란?]()
+> - [프록시 디자인 패턴 이해하기](https://github.com/Pyotato/Daily_FE_article/blob/main/design_pattern/using_the_proxy_design_pattern_with_react.md#1)
+>   - [왜 객체에 대한 제어권을 갖아야할까?](https://github.com/Pyotato/Daily_FE_article/blob/main/design_pattern/using_the_proxy_design_pattern_with_react.md#1-1)
+>   - [프록시 디자인 패턴 활용의 장점](https://github.com/Pyotato/Daily_FE_article/blob/main/design_pattern/using_the_proxy_design_pattern_with_react.md#1-2)
+> - [자바스크립트에서 프록시 객체란?](https://github.com/Pyotato/Daily_FE_article/blob/main/design_pattern/using_the_proxy_design_pattern_with_react.md#2)
+> - [리액트에서 프록시 디자인 패턴 사용하는 방법](https://github.com/Pyotato/Daily_FE_article/blob/main/design_pattern/using_the_proxy_design_pattern_with_react.md#3)
+>   - [보안 강화](https://github.com/Pyotato/Daily_FE_article/blob/main/design_pattern/using_the_proxy_design_pattern_with_react.md#3-1)
+>   - [효율적인 데이터 관리](https://github.com/Pyotato/Daily_FE_article/blob/main/design_pattern/using_the_proxy_design_pattern_with_react.md#3-2)
+>   - [효율적인 데이터 관리 : 복잡한 연산 데이터 캐시](https://github.com/Pyotato/Daily_FE_article/blob/main/design_pattern/using_the_proxy_design_pattern_with_react.md#3-3)
+>   - [그 외의 사용 예시들](https://github.com/Pyotato/Daily_FE_article/blob/main/design_pattern/using_the_proxy_design_pattern_with_react.md#3-4)
+> - [마무리를 지으며](https://github.com/Pyotato/Daily_FE_article/blob/main/design_pattern/using_the_proxy_design_pattern_with_react.md#4)
+> - [읽은 후 생각](https://github.com/Pyotato/Daily_FE_article/blob/main/design_pattern/using_the_proxy_design_pattern_with_react.md#5)
 
 <h2 id='1'>프록시 디자인 패턴 이해하기</h2>
 
@@ -278,7 +285,7 @@ export const MemorizeExpensiveFunction = () => {
 
 ---
 
-## 읽은 후 생각
+<h2 id='5'>읽은 후 생각</h2> 
 
 - chatgpt API를 사용했던 프로젝트가 있었는데, 해당 프로젝트는 응답시간(평균 24s)이 너무 길거나, 토큰을 사용해야 했다(유료)는 점에서 이 프록시 디자인 패턴을 활용해보면 좋을 거 같다는 생각이 들었다.
 - 예를 들어, 입력값으로 비슷한 질문에 대한 데이터가 있다면 API요청을 하기 보다는 먼저 캐시된 데이터를 가져오는게 더 효율적인 자원을 사용하는 방식일 것 같다.
