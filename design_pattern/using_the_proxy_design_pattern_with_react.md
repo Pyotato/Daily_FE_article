@@ -3,7 +3,8 @@
 - 원문 : [Using The Proxy Design Pattern with React](https://blog.bitsrc.io/proxy-design-pattern-with-react-c0b465980fbf)
 - `리액트 환경에서 프록시 디자인 패턴을 사용하는 방법에 대해 탐구하는 글입니다.`
 
-  ![thumbnail](https://miro.medium.com/v2/resize%253Afit%253A2000/format%253Awebp/1%252Aps8bQ2R2XTKxe0gKGeJvfA.png)
+<img width="1064" alt="image" src="https://github.com/Pyotato/Daily_FE_article/assets/102423086/596056cb-4b62-409d-9d65-c10bbf2b2648">
+
 
 개발자로써 한번쯤은 '디자인 패턴들'이라는 용어를 접해봤을 것입니다.
 이 용어는 코딩 마스터의 영역으로 가기 위해 알아야하는 개념이므로 단순히 짚고 넘어갈 수 없는 개념이죠.
@@ -22,7 +23,8 @@
 
 <h2 id='1'>프록시 디자인 패턴 이해하기</h2>
 
-![Alt text](https://miro.medium.com/v2/resize%253Afit%253A1280/format%253Awebp/0%252ARS0uzpy7JeLdLyib.png)
+<img width="861" alt="image" src="https://github.com/Pyotato/Daily_FE_article/assets/102423086/b5f5b039-bcad-479d-979f-2bded5efe919">
+
 
 프록시 디자인 패턴은 하나의 객체의 대체제나 플레이스홀더를 제공할수 있도록 해줍니다.
 대체나 플레이스홀더를 제공하게 되면, 프록시는 원본 객체에 대한 제어권을 지니게 되고, 원본 객체에 요청이 전달된 전후의 동작들을 실행가능하게 합니다.
