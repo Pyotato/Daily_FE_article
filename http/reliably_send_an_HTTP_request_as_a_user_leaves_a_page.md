@@ -2,6 +2,19 @@
 
 - 원문 : [Reliably Send an HTTP Request as a User Leaves a Page](https://css-tricks.com/send-an-http-request-on-page-exit/)
 
+## 목차
+
+> - [브라우저는 열린 HTTP요청 보존을 장담할 수 없다](https://github.com/Pyotato/Daily_FE_article/blob/main/http/reliably_send_an_HTTP_request_as_a_user_leaves_a_page.md#1)
+> - [취소되는 이유](https://github.com/Pyotato/Daily_FE_article/blob/main/http/reliably_send_an_HTTP_request_as_a_user_leaves_a_page.md#2)
+> - [해결 방안들 & 대안](https://github.com/Pyotato/Daily_FE_article/blob/main/http/reliably_send_an_HTTP_request_as_a_user_leaves_a_page.md#3)
+> - [브라우저가 중요한 요청 보존하도록 하기](https://github.com/Pyotato/Daily_FE_article/blob/main/http/reliably_send_an_HTTP_request_as_a_user_leaves_a_page.md#4)
+>   - [Fetch의 <i>keepalive flag</i>사용하기](https://github.com/Pyotato/Daily_FE_article/blob/main/http/reliably_send_an_HTTP_request_as_a_user_leaves_a_page.md#4-1)
+>   - [<i>Navigator.sendBeacon()</i> 사용하기](https://github.com/Pyotato/Daily_FE_article/blob/main/http/reliably_send_an_HTTP_request_as_a_user_leaves_a_page.md#4-2)
+>   - [명예의 전당: <i>ping</i>속성 활용하기](https://github.com/Pyotato/Daily_FE_article/blob/main/http/reliably_send_an_HTTP_request_as_a_user_leaves_a_page.md#4-3)
+> - [결론: 어떤 방식을 채택해야하는가](https://github.com/Pyotato/Daily_FE_article/blob/main/design_pattern/using_the_proxy_design_pattern_with_react.md#5)
+> - [같은 실수 반복하지 않도록](https://github.com/Pyotato/Daily_FE_article/blob/main/design_pattern/using_the_proxy_design_pattern_with_react.md#6)
+> - [읽은 후 생각](https://github.com/Pyotato/Daily_FE_article/blob/main/design_pattern/using_the_proxy_design_pattern_with_react.md#7)
+
 유저가 다른 페이지로 이동하거나 form을 제출하면서 HTTP 요청을 '/log'에 데이터와 함께 보내야할 경우가 있습니다. 아래와 같이 링크를 클릭헸을 때 외부 서비스에 정보를 보내애하는 경우를 고려해봅시다.
 
 ```html
